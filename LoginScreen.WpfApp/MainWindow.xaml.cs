@@ -28,7 +28,33 @@ namespace LoginScreen.WpfApp
 
     private void BtnLogin_Click(object sender, RoutedEventArgs e)
     {
-      MessageBox.Show($"Hello, {txtUsername.Text}!");
+      bool isValid = true;
+      if (string.IsNullOrEmpty(txtUsername.Text))
+      {
+        isValid = false;
+        txtUsernameValidation.Visibility = Visibility.Visible;
+      }
+      else
+      {
+        txtUsernameValidation.Visibility = Visibility.Hidden;
+      }
+
+      if (string.IsNullOrEmpty(txtPassword.Password) || txtPassword.Password != "P@ssw0rd!")
+      {
+        isValid = false;
+        txtPasswordValidation.Visibility = Visibility.Visible;
+      }
+      else
+      {
+        txtPasswordValidation.Visibility = Visibility.Hidden;
+      }
+
+      if (isValid)
+      {
+        MessageBox.Show($"Hello, {txtUsername.Text}!");
+        txtUsername.Text = null;
+        txtPassword.Password = null;
+      }
     }
   }
 }
