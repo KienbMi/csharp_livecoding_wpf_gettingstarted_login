@@ -23,6 +23,12 @@ namespace LoginScreen.WpfApp
     public MainWindow()
     {
       InitializeComponent();
+      btnLogin.Click += BtnLogin_Click;
+    }
+
+    private void BtnLogin_Click(object sender, RoutedEventArgs e)
+    {
+      MessageBox.Show($"Hello, {txtUsername.Text}!");
     }
   }
 }
